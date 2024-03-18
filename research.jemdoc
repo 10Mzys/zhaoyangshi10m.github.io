@@ -1,0 +1,91 @@
+# jemdoc: menu{MENU}{research.html}
+==Zhaoyang Shi (石兆阳)
+
+~~~
+== Research 
+I am broadly interested in the following topics:              \n
+- Geometric and topological statistics, TDA
+- Machine learning
+- Random graph
+- Kernel method and RKHS space
+- Stein's method
+~~~
+
+== Projects
+=== Dimension Reduction via TDA (topological data analysis)
+Persistent homology techniques like persistence diagrams (PDs) have been commonly considered in many statistical learning algorithms including clustering, classification, dimension reduction, etc. A $k$-th persistence diagram is a set of points $\{ (a,b) \in \bar{\mathbf{R}} ^ 2:  -\infty \le a \le b \le +\infty \}$, where each point $(a,b)$ records the "birth" and "death" time for each $k$-dimensional homology class ($k$-dimensional hole) with $b-a$ being its life (persistence), e.g., points as 0 dim, lines as 1 dim, triangles as 2 dim, etc.
+
+~~~
+{}{img_left}{figs/PDS1.jpg}{420}{560} \n 
+The left figures consists of a sample on a circle with Gaussian noise while the right figure shows its persistence diagram. One connected component (the black dot) and one hole (the red triangle) are significant. The points near diagonal are "insignificant noises" corresponding to the sampling distribution.
+~~~
+
+~~~
+{}{img_left}{figs/dr.jpg}{420}{560} \n 
+The idea was proposed in [https://openaccess.thecvf.com/content_CVPRW_2020/html/w50/Kachan_Persistent_Homology-Based_Projection_Pursuit_CVPRW_2020_paper.html/ Persistent Homology-based Projection Pursuit], where the dimension reduction from a cylinder to 2D is by minimizing the Wasserstein distance between persistence diagrams between the original data X and its linear projected data (preserving topological features):
+\(
+\min _ P W _ 2 (PD(X),PD(P ^ T X)).
+\)
+I haven been working on its implementation including adding noises, multiple cylinders with different angles, sizes and some more complicated structures, see [https://github.com/10Mzys/Dimension-reduction-via-TDA/ my codes] for more details. Also, I am more interested in the theoretical analysis which is missing in the original paper. This part involves concentration inequality and stability of the persistence diagrams, convergence of the optimal transport, etc.
+~~~
+
+~~~
+{}{img_left}{figs/cylinders.jpg}{480}{560} \n 
+The left figure shows an example of 2 cylinders with different sizes and angles in 3D. The middle one is the projected data onto 2D. The right picture presents the persistence diagrams of the original data (blue) and the projected data (red).
+~~~
+
+=== Normal Approximation of Stabilizing Statistics via Stein's Method
+My focus of Stein's method is on deriving the normal approximation rate of the so-called *stabilizing* statistics via some metric including the Kolmogorov metric, the Wasserstein distance, etc, where the empirical process below verifies CLT with the rate given by the Berry-Esseen theorem:
+
+\(
+\centering
+I _ {n,f}:=\sqrt{n}\left(\frac{1}{n}\sum_{i=1}^{n}f(X_i)-\mathbf{E}f(X)\right) \rightarrow N(0, \mbox{Var} f(X)),\qquad d_{K}\left(\frac{I_{n,f}-\mathbf{E}I_{n,f}}{\sqrt{\mbox{Var} I_{n,f}}},N\right)\le C\frac{\mathbf{E}|f_{1}-\mathbf{E}f_{1}|^{3}}{\mbox{Var} f_{1}}\frac{1}{\sqrt{\mbox{Var} I_{n,f}}},
+\)
+where $f _ {I}:=f(X _ i)$ are i.i.d. with some moment conditions.
+
+One of the most significant problems with the classical Berry-Esseen theorem is it requires i.i.d. score functions ($f _ i$). Also, classical statistical models usually assume i.i.d. data from (say) *sub-Gaussian* density however Stein's method would allow more general families of densities like log-concave, etc. Furthermore, sometimes the statistics are not or hard to be expressed into sums of scores. From dependent scores to independent scores and from sums of scores to the general statistics, a technique called *Stabilization* gains more and more interest.
+
+Let $\eta$ be a point process and the key idea behind stabilization is to assume the cost function (not necessarily as sums):
+
+\(
+D_{x}F(\eta):=F(\eta\cup\{x\})-F(\eta)
+\)
+won't change its value when adding points outside some region around $x$ (typically a ball when we call the radius as the radius of stabilization). Some other variants include assume the score functions won't change values. The motivation behind it is 
+
+- introducing local dependence between score functions or the statistic itself.
+- controlling the "size" of local dependence, i.e., the tail probability of the radius of stabilization contributes to the rates of normal approximation.
+- combining with some moment conditions.
+
+Many statistics (especially graph-based ones) lie in this category like geometric statistics including $k$-nearest neighbor graphs statistics, minimum spanning trees statistics and topological statistics including Euler characteristics and Betti numbers, etc. Moreover, its connection with many other estimators like random forest, kernel regression estimators, entropy estimators, etc. shows its strong potentials in statistical field for statistical inferences.
+
+This resulting rate of normal approximation usually recovers the classical Berry-Esseen one's. I have been working with several particular types of the family of stabilization notions, see [https://arxiv.org/abs/2210.10744v1/ *A Flexible Approach for Normal Approximation of Geometric and Topological Statistics*].
+
+=== Normal Approximation of $k$-PNN Estimators and Random Forest
+Since its introduction, random forest has shown its great power on machine learning and many other fields while a great many of variants of random forest have been proposed for many purposes. Among them, a type that is closely connected to the so-call $k$-potential nearest neighbor ($k$-PNN) was studied in [https://www.jstor.org/stable/27590719/ Random Forests and Adaptive Nearest Neighbors] and later on [https://www.researchgate.net/publication/222676309_On_the_layered_nearest_neighbour_estimate_the_bagged_nearest_neighbour_estimate_and_the_random_forest_method_in_regression_and_classification?enrichId=rgreq-da838ab1405dbf01f4f6d245bf24b645-XXX&enrichSource=Y292ZXJQYWdlOzIyMjY3NjMwOTtBUzo5MTI4NDg3NDE5OTA0MDFAMTU5NDY1MTUwODk2Nw==&el=1_x_3&_esc=publicationCoverPdf/ On the Layered Nearest Neighbour Estimate, the Bagged Nearest Neighbour Estimate and the Random Forest Method in Regression and Classification]:
+\(
+\hat{r}_{n,k}(x_0):=\sum_{i=1}^{n}W_{nx}y_{i},
+\)
+for a regression model: $ y = r(\epsilon, x)$, where $W_{ni}$ are weights with sum 1. They pointed out that only $k$-PNNs can have nonzero weights $W_{ni}$ thus this type of random forest (non-adaptive) can be viewed as a weighted sum of responses of $k$-PNNs. Here, $k$-PNN is a generalization of classical $k$-NNs. 
+
+In the paper, we showed that actually, this local property ($W_{ni}$ can only be nonzero for $k$-PNNs) verifies the *region of stabilization*, which is a generalization of radius of stabilization. A multivariate normal approximation rate $\log ^ {-(d-1)/2} n$ measured by the Kolmogorov metric has been proven along with a smooth Bootstrap application for statistical inferences. Furthermore, this region-based stabilization procedure will demonstrate a strong potential on showing normal approximation of many statistics including kernel regression estimators, entropy estimators, etc. This is the first result on the rates of (multivariate) normal approximation of random forest while allowing $k$ grows as $n$ grows.
+
+=== Weighted Graph Laplacians and Fractional Laplacians
+Graphs Laplacians serve as an important tool in identifying geometric structure in data. Their eigenvalues and eigenvectors, in particular, play a central role in many unsupervised and semi-supervised learning algorithms. When properly scaled, the (unnormalized) graph Laplacian $L$ will converge to the following (weighted) Laplace–Beltrami operator:
+\(
+\mathcal{L}:=-\frac{1}{p}\mbox{div}(p ^ 2 \nabla f),
+\)
+where $p$ is the density. While there are already any existing literatures focusing on it and its variants including normalized Laplacian, random walk Laplacian, recently, I am more interested in a more general family: the weighted Laplacian: for a parameter $w=(p,q,r)$ and $q \neq 1$,
+\(
+L_{w}:= D ^ {\frac{1-p}{q-1}}(D-W)D ^ {-\frac{r}{q-1}},
+\)
+and $L_{w}:= D-W$ for $q=1$, where I focus a family of normalization that cover many commonly used Laplacians proposed in [https://arxiv.org/pdf/1909.06389v1.pdf/ Spectral Analysis of Weighted Laplacians Arising in Data Clustering].
+
+One of the problems of statistical interest we have considered in our work [https://arxiv.org/abs/2311.00140/ Adaptive and Non-adaptive Minimax Rates for Weighted Laplacian-eigenmap Based Nonparametric Regression] is to apply the weighted Laplacian to a standard nonparametric regression problem (Gaussian i.i.d. noise)
+\(
+y_{i}=f(X_{i})+\epsilon_{i},
+\)
+via eigenmaps algorithm as well as deriving its non-adaptive and adaptive minimax optimal rates when the true regression function is assumed to lie in Sobolev spaces, i.e., achieving $n^{-2s/(2s+d)}$ rate with $s$ as the smoothness and $d$ as the dimension. We generalizes [https://arxiv.org/abs/2111.07394/ Minimax Optimal Regression over Sobolev Spaces via Laplacian Eigenmaps on Neighbourhood Graphs], which only considered the unnormalized Laplacian as a special case of the weighted Laplacian and also obtains an adaptive estimation via Lepski's method achieving minimax optimal rates up to a logarithmic factor. This adaption does not require the knowledge of either the smoothness or the norm parameters of Sobolev spaces and its the first of its kind. Besides, our proof arguments could rigorously prove the idea roughly outlined by [https://arxiv.org/pdf/1909.06389v1.pdf/ Spectral Analysis of Weighted Laplacians Arising in Data Clustering] on showing the convergence of the discrete weighted graph Laplacian matrices to their continuum counterparts in terms of eigenvalue convergence and eigenvector convergence.
+
+
+
+

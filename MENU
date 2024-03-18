@@ -1,0 +1,10 @@
+menu
+    Home                [index.html]
+	Teaching			[teaching.html]
+    Projects			[research.html]
+	Publications        [publications.html]
+    Activities			[activities.html]
+    
+links
+   UC Davis Statistics          [https://statistics.ucdavis.edu/]
+   Fudan Math       [https://math.fudan.edu.cn/]

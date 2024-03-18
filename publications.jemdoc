@@ -1,0 +1,29 @@
+# jemdoc: menu{MENU}{publications.html}
+==Zhaoyang Shi (石兆阳)
+
+~~~
+*Multivariate Gaussian Approximation in Random Forest via Region-based Stabilization*, 2024, \n
+with Chinmoy Bhattacharjee, Krishna Balasubramanian and Wolfgang Polonik. \n
+[https://arxiv.org/abs/2403.09960/ \[arXiv Version\]]
+
+*Nonsmooth Nonparametric Regression via Fractional Laplacian Eigenmaps*, 2024, \n 
+with Krishna Balasubramanian and Wolfgang Polonik. \n
+[https://arxiv.org/abs/2402.14985/ \[arXiv Version\]]
+
+*Adaptive and Non-adaptive Minimax Rates for Weighted Laplacian-eigenmap Based Nonparametric Regression*, International Conference on Artificial Intelligence and Statistics (AISTATS), 2024, \n
+with Krishna Balasubramanian and Wolfgang Polonik. \n
+[https://arxiv.org/abs/2311.00140/ \[arXiv Version\]]
+
+*A Flexible Approach for Normal Approximation of Geometric and Topological Statistics*, Bernoulli, 2023+, \n
+with Krishna Balasubramanian and Wolfgang Polonik. \n
+[https://arxiv.org/abs/2210.10744v1/ \[arXiv Version\]]
+
+*The Analysis of Features Importance in Electrical Infrared Images Faults Diagnosis* \n
+with Qi Zhao, Lei Su, Ping Ling, Nannan Yan, Chunjie Gu and Zhixiong Shi. \n
+Proceedings of the 1st International Workshop on Internet of People, Assisitive Robots and Things, ACM, 2018.
+~~~
+
+== Works in progress
+*Normal Approximation on Density Ratio Estimation and Average Treatment Effect (ATE)* \n
+with Krishna Balasubramanian and Wolfgang Polonik. \n
+

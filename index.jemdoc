@@ -1,0 +1,36 @@
+# jemdoc: menu{MENU}{index.html}
+==Zhaoyang Shi (石兆阳)
+
+~~~
+{}{img_left}{figs/zys.jpg}{Zhaoyang Shi}{150}{150}{https://statistics.ucdavis.edu}
+\n
+*PhD Candidate* \n
+(From 2019-)
+\n\n
+[https://statistics.ucdavis.edu] \n
+[https://www.ucdavis.edu/ University of California, Davis] \n
+[https://www.google.com/maps/place/Department+of+Statistics/@38.5358796,-121.7527122,19.17z/data=!4m5!3m4!1s0x0:0xb042aa4959aa3d52!8m2!3d38.5356466!4d-121.7520621?shorturl=1/ 399 Crocker Ln, Davis, CA 95616]
+\n \n
+Phone: +1(530)-564-9539 \n
+Email: [zysshi@ucdavis.edu]
+\n
+~~~
+
+
+~~~
+== About me
+I am now a fifth-and-final-year PhD student in the Department of Statistics at UC Davis. I am fortunate to be co-advised by [https://www.stat.ucdavis.edu/~polonik/WP-personal-home.html/ Wolfgang Polonik] and [https://sites.google.com/view/kriznakumar/home/ Krishna Balasubramanian].
+
+I am broadly interested in geometric and topological statistics, usually in the interaction with machine learning theory, random graph applications, topological data analysis, high dimensional statistics, kernel method, RKHS space and Stein's method. I focus on understanding the theoretical ground of many statistical problems as well as other applied math problems that are of practical importance. [research.html ~~*<<more>>*]
+
+Before coming to UC Davis, I received my Bachelor's degree in [https://math.fudan.edu.cn/ Math at Fudan University] in 2019, where I was fortunate to be advised by [https://mastone1983.github.io/index.html/ Lei Shi].
+~~~
+
+~~~
+=== Research Experience
+- Graduate project at [https://math.fudan.edu.cn/ School of Mathematical Sciences], Fudan University, advised by [https://mastone1983.github.io/index.html/ Lei Shi], 2018-2019. \n
+*Bootstrapping Elastic Net Lasso Estimators*.
+
+- Research Assistant at [https://scms.fudan.edu.cn/ Shanghai Center For Mathematical Sciences], Fudan University, in the group of [https://warwick.ac.uk/fac/sci/dcs/people/jianfeng_feng/ Jianfeng Feng], 2018-2019. \n
+*Machine Learning Algorithms and Implementation For Classification and Detection of Large Data*.
+~~~
